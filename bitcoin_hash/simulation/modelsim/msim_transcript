@@ -12,41 +12,49 @@
 # 
 # vlog -sv -work work +incdir+C:/Users/Potato/Documents/School/ECE\ 111/me/bitcoin_hash {C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/bitcoin_hash.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 00:05:50 on Mar 20,2021
+# Start time: 14:04:31 on Mar 20,2021
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash" C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/bitcoin_hash.sv 
 # -- Compiling module bitcoin_hash
 # 
 # Top level modules:
 # 	bitcoin_hash
-# End time: 00:05:50 on Mar 20,2021, Elapsed time: 0:00:00
+# End time: 14:04:31 on Mar 20,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 vlog -reportprogress 300 -work work {C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/bitcoin_hash.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 00:06:04 on Mar 20,2021
+# Start time: 14:04:51 on Mar 20,2021
 # vlog -reportprogress 300 -work work C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/bitcoin_hash.sv 
 # -- Compiling module bitcoin_hash
 # 
 # Top level modules:
 # 	bitcoin_hash
-# End time: 00:06:05 on Mar 20,2021, Elapsed time: 0:00:01
+# End time: 14:04:51 on Mar 20,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 vlog -reportprogress 300 -work work {C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/tb_bitcoin_hash.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 00:06:05 on Mar 20,2021
+# Start time: 14:04:51 on Mar 20,2021
 # vlog -reportprogress 300 -work work C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/tb_bitcoin_hash.sv 
 # -- Compiling module tb_bitcoin_hash
 # 
 # Top level modules:
 # 	tb_bitcoin_hash
-# End time: 00:06:05 on Mar 20,2021, Elapsed time: 0:00:00
+# End time: 14:04:51 on Mar 20,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 vsim work.tb_bitcoin_hash
 # vsim work.tb_bitcoin_hash 
-# Start time: 00:06:08 on Mar 20,2021
+# Start time: 14:04:54 on Mar 20,2021
 # Loading sv_std.std
 # Loading work.tb_bitcoin_hash
 # Loading work.bitcoin_hash
+add wave -position insertpoint  \
+sim:/tb_bitcoin_hash/done \
+sim:/tb_bitcoin_hash/mem_clk \
+sim:/tb_bitcoin_hash/mem_we \
+sim:/tb_bitcoin_hash/mem_addr \
+sim:/tb_bitcoin_hash/mem_write_data
+add wave -position insertpoint  \
+sim:/tb_bitcoin_hash/bitcoin_hash_inst/cur_write_data
 run
 # ---------------
 # 19 WORD HEADER:
@@ -95,13 +103,13 @@ run
 # 
 # CONGRATULATIONS! All your hash results are correct!
 # 
-# Total number of cycles:        4069
+# Total number of cycles:        3895
 # 
 # 
 # ***************************
 # 
-# ** Note: $stop    : C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/tb_bitcoin_hash.sv(334)
-#    Time: 81430 ps  Iteration: 2  Instance: /tb_bitcoin_hash
-# Break in Module tb_bitcoin_hash at C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/tb_bitcoin_hash.sv line 334
-# End time: 00:06:22 on Mar 20,2021, Elapsed time: 0:00:14
+# ** Note: $stop    : C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/tb_bitcoin_hash.sv(335)
+#    Time: 77950 ps  Iteration: 2  Instance: /tb_bitcoin_hash
+# Break in Module tb_bitcoin_hash at C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/tb_bitcoin_hash.sv line 335
+# End time: 14:12:43 on Mar 20,2021, Elapsed time: 0:07:49
 # Errors: 0, Warnings: 0

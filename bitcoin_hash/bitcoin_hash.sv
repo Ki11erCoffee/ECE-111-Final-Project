@@ -28,13 +28,14 @@ logic [3:0] ct;
 integer NUM_OF_WORDS = 19;
 logic [31:0] count = 32'h00000000;
 logic [2:0] phase;
-logic [15:0] bit_offset;
+logic [15:0] bit_offset; 
+
 
 
 
 
 // FSM state variables 
-enum logic [4:0] {IDLE, READ, BLOCK, COMPUTE, WRITE, WAIT, SET, NULL} state;
+enum logic [4:0] {IDLE, READ, BLOCK, COMPUTE, WRITE, WAIT, SET, NULL, BLOCK2} state;
 
 
 
@@ -194,7 +195,9 @@ always_ff @(posedge clk, negedge reset_n) begin
 						message[19+i] <= 0;	//rest of 0's padding
 				end
 				
+				
 				state <= BLOCK;	//all data read, move on to next step 
+						
 				offset <= 0;	//reset offset
 			end	
 		end
@@ -208,7 +211,7 @@ always_ff @(posedge clk, negedge reset_n) begin
 		end
 		BLOCK: begin
 			// Fetch message in 512-bit block size
-			// For each of 512-bit block initiate hash value computation
+			// For each of 512-bit block initiate hash value computation		
 			if(i < num_blocks) begin
 				state <= COMPUTE;
 				i <= i + 1;
@@ -218,7 +221,8 @@ always_ff @(posedge clk, negedge reset_n) begin
 			end
 			else begin
 				state <= SET;	
-			end
+			end			
+			
 		end
 		COMPUTE: begin
 			// 64 processing rounds steps for 512-bit block 
@@ -259,6 +263,8 @@ always_ff @(posedge clk, negedge reset_n) begin
 
 				h <= h7 + h;
 				h7 <= h7 + h;
+				
+										
 							
 				state <= BLOCK; //finished computing 1 block, go back to BLOCK 
 			end
@@ -330,12 +336,17 @@ always_ff @(posedge clk, negedge reset_n) begin
 			
 		end
 		NULL: begin
+				if (count == num_nonces)
+					state <= IDLE;
+				else begin
+				
 				bit_offset <= bit_offset + 1;
 				offset <= 0;
 				phase <= 1;
 				i <= 0;
 				j <= 0;	
-						
+					
+					
 				a <= 32'h6a09e667;
 				h0 <= 32'h6a09e667;
 
@@ -359,12 +370,16 @@ always_ff @(posedge clk, negedge reset_n) begin
 
 				h <= 32'h5be0cd19;						
 				h7 <= 32'h5be0cd19;
+				
+				
+				
 						
 				cur_we <= 0;	//read from memory
 				cur_addr <= message_addr; //memory address = address of message
 				cur_write_data <= 0;
 				state <= WAIT;		
 				NUM_OF_WORDS = 19;
+				end
 		end
 		
 		

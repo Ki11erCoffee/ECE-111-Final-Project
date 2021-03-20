@@ -1,5 +1,5 @@
 Analysis & Synthesis report for bitcoin_hash
-Fri Mar 19 20:04:33 2021
+Sat Mar 20 14:15:18 2021
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -16,14 +16,15 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   8. State Machine - |bitcoin_hash|phase
   9. State Machine - |bitcoin_hash|state
  10. Registers Removed During Synthesis
- 11. General Register Statistics
- 12. Inverted Register Statistics
- 13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Parameter Settings for User Entity Instance: Top-level Entity: |bitcoin_hash
- 15. Post-Synthesis Netlist Statistics for Top Partition
- 16. Elapsed Time Per Partition
- 17. Analysis & Synthesis Messages
- 18. Analysis & Synthesis Suppressed Messages
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for User Entity Instance: Top-level Entity: |bitcoin_hash
+ 16. Post-Synthesis Netlist Statistics for Top Partition
+ 17. Elapsed Time Per Partition
+ 18. Analysis & Synthesis Messages
+ 19. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -50,16 +51,16 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +-----------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status       ; Successful - Fri Mar 19 20:04:33 2021       ;
+; Analysis & Synthesis Status       ; Successful - Sat Mar 20 14:15:18 2021       ;
 ; Quartus Prime Version             ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                     ; bitcoin_hash                                ;
 ; Top-level Entity Name             ; bitcoin_hash                                ;
 ; Family                            ; Arria II GX                                 ;
 ; Logic utilization                 ; N/A                                         ;
-;     Combinational ALUTs           ; 115                                         ;
+;     Combinational ALUTs           ; 1,689                                       ;
 ;     Memory ALUTs                  ; 0                                           ;
-;     Dedicated logic registers     ; 91                                          ;
-; Total registers                   ; 91                                          ;
+;     Dedicated logic registers     ; 2,189                                       ;
+; Total registers                   ; 2189                                        ;
 ; Total pins                        ; 118                                         ;
 ; Total virtual pins                ; 0                                           ;
 ; Total block memory bits           ; 0                                           ;
@@ -173,17 +174,23 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-8         ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                    ;
-+----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                ; Library ;
-+----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------+---------+
-; bitcoin_hash.sv                  ; yes             ; User SystemVerilog HDL File  ; C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv ;         ;
-+----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                 ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                             ; Library ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------+---------+
+; bitcoin_hash.sv                  ; yes             ; User SystemVerilog HDL File  ; C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/bitcoin_hash.sv ;         ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------------+
@@ -191,34 +198,34 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------+-----------+
 ; Resource                                      ; Usage     ;
 +-----------------------------------------------+-----------+
-; Estimated ALUTs Used                          ; 115       ;
-;     -- Combinational ALUTs                    ; 115       ;
+; Estimated ALUTs Used                          ; 1689      ;
+;     -- Combinational ALUTs                    ; 1689      ;
 ;     -- Memory ALUTs                           ; 0         ;
 ;     -- LUT_REGs                               ; 0         ;
-; Dedicated logic registers                     ; 91        ;
+; Dedicated logic registers                     ; 2189      ;
 ;                                               ;           ;
-; Estimated ALUTs Unavailable                   ; 4         ;
-;     -- Due to unpartnered combinational logic ; 4         ;
+; Estimated ALUTs Unavailable                   ; 1         ;
+;     -- Due to unpartnered combinational logic ; 1         ;
 ;     -- Due to Memory ALUTs                    ; 0         ;
 ;                                               ;           ;
-; Total combinational functions                 ; 115       ;
+; Total combinational functions                 ; 1689      ;
 ; Combinational ALUT usage by number of inputs  ;           ;
-;     -- 7 input functions                      ; 0         ;
-;     -- 6 input functions                      ; 14        ;
-;     -- 5 input functions                      ; 11        ;
-;     -- 4 input functions                      ; 3         ;
-;     -- <=3 input functions                    ; 87        ;
+;     -- 7 input functions                      ; 1         ;
+;     -- 6 input functions                      ; 116       ;
+;     -- 5 input functions                      ; 27        ;
+;     -- 4 input functions                      ; 19        ;
+;     -- <=3 input functions                    ; 1526      ;
 ;                                               ;           ;
 ; Combinational ALUTs by mode                   ;           ;
-;     -- normal mode                            ; 35        ;
-;     -- extended LUT mode                      ; 0         ;
-;     -- arithmetic mode                        ; 80        ;
-;     -- shared arithmetic mode                 ; 0         ;
+;     -- normal mode                            ; 1128      ;
+;     -- extended LUT mode                      ; 1         ;
+;     -- arithmetic mode                        ; 432       ;
+;     -- shared arithmetic mode                 ; 128       ;
 ;                                               ;           ;
-; Estimated ALUT/register pairs used            ; 131       ;
+; Estimated ALUT/register pairs used            ; 2598      ;
 ;                                               ;           ;
-; Total registers                               ; 91        ;
-;     -- Dedicated logic registers              ; 91        ;
+; Total registers                               ; 2189      ;
+;     -- Dedicated logic registers              ; 2189      ;
 ;     -- I/O registers                          ; 0         ;
 ;     -- LUT_REGs                               ; 0         ;
 ;                                               ;           ;
@@ -228,9 +235,9 @@ https://fpgasoftware.intel.com/eula.
 ; DSP block 18-bit elements                     ; 0         ;
 ;                                               ;           ;
 ; Maximum fan-out node                          ; clk~input ;
-; Maximum fan-out                               ; 92        ;
-; Total fan-out                                 ; 843       ;
-; Average fan-out                               ; 1.91      ;
+; Maximum fan-out                               ; 2190      ;
+; Total fan-out                                 ; 15298     ;
+; Average fan-out                               ; 3.72      ;
 +-----------------------------------------------+-----------+
 
 
@@ -239,7 +246,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+---------------------+---------------------------+-------------------+--------------+---------+-----------+-----------+-----------+------+--------------+---------------------+--------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 12x12 ; DSP 18x18 ; DSP 36x36 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name  ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------------+--------------+---------+-----------+-----------+-----------+------+--------------+---------------------+--------------+--------------+
-; |bitcoin_hash              ; 115 (115)           ; 91 (91)                   ; 0                 ; 0            ; 0       ; 0         ; 0         ; 0         ; 118  ; 0            ; |bitcoin_hash       ; bitcoin_hash ; work         ;
+; |bitcoin_hash              ; 1689 (1689)         ; 2189 (2189)               ; 0                 ; 0            ; 0       ; 0         ; 0         ; 0         ; 118  ; 0            ; |bitcoin_hash       ; bitcoin_hash ; work         ;
 +----------------------------+---------------------+---------------------------+-------------------+--------------+---------+-----------+-----------+-----------+------+--------------+---------------------+--------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -256,18 +263,19 @@ Encoding Type:  One-Hot
 
 
 Encoding Type:  One-Hot
-+------------------------------------------------------------------------------------------------+
-; State Machine - |bitcoin_hash|state                                                            ;
-+---------------+-----------+------------+---------------+-------------+------------+------------+
-; Name          ; state.SET ; state.WAIT ; state.COMPUTE ; state.BLOCK ; state.READ ; state.IDLE ;
-+---------------+-----------+------------+---------------+-------------+------------+------------+
-; state.IDLE    ; 0         ; 0          ; 0             ; 0           ; 0          ; 0          ;
-; state.READ    ; 0         ; 0          ; 0             ; 0           ; 1          ; 1          ;
-; state.BLOCK   ; 0         ; 0          ; 0             ; 1           ; 0          ; 1          ;
-; state.COMPUTE ; 0         ; 0          ; 1             ; 0           ; 0          ; 1          ;
-; state.WAIT    ; 0         ; 1          ; 0             ; 0           ; 0          ; 1          ;
-; state.SET     ; 1         ; 0          ; 0             ; 0           ; 0          ; 1          ;
-+---------------+-----------+------------+---------------+-------------+------------+------------+
++-------------------------------------------------------------------------------------------------------------+
+; State Machine - |bitcoin_hash|state                                                                         ;
++---------------+------------+-----------+------------+---------------+-------------+------------+------------+
+; Name          ; state.NULL ; state.SET ; state.WAIT ; state.COMPUTE ; state.BLOCK ; state.READ ; state.IDLE ;
++---------------+------------+-----------+------------+---------------+-------------+------------+------------+
+; state.IDLE    ; 0          ; 0         ; 0          ; 0             ; 0           ; 0          ; 0          ;
+; state.READ    ; 0          ; 0         ; 0          ; 0             ; 0           ; 1          ; 1          ;
+; state.BLOCK   ; 0          ; 0         ; 0          ; 0             ; 1           ; 0          ; 1          ;
+; state.COMPUTE ; 0          ; 0         ; 0          ; 1             ; 0           ; 0          ; 1          ;
+; state.WAIT    ; 0          ; 0         ; 1          ; 0             ; 0           ; 0          ; 1          ;
+; state.SET     ; 0          ; 1         ; 0          ; 0             ; 0           ; 0          ; 1          ;
+; state.NULL    ; 1          ; 0         ; 0          ; 0             ; 0           ; 0          ; 1          ;
++---------------+------------+-----------+------------+---------------+-------------+------------+------------+
 
 
 +---------------------------------------------------------------------------------+
@@ -275,23 +283,30 @@ Encoding Type:  One-Hot
 +----------------------------------------+----------------------------------------+
 ; Register name                          ; Reason for Removal                     ;
 +----------------------------------------+----------------------------------------+
-; NUM_OF_WORDS[5..31]                    ; Stuck at GND due to stuck port data_in ;
-; NUM_OF_WORDS[4]                        ; Stuck at VCC due to stuck port data_in ;
-; NUM_OF_WORDS[2,3]                      ; Stuck at GND due to stuck port data_in ;
-; cur_write_data[1..31]                  ; Merged with cur_write_data[0]          ;
+; NUM_OF_WORDS[2,3,5..9,11..31]          ; Merged with NUM_OF_WORDS[10]           ;
 ; NUM_OF_WORDS[1]                        ; Merged with NUM_OF_WORDS[0]            ;
-; cur_we                                 ; Stuck at GND due to stuck port data_in ;
-; cur_write_data[0]                      ; Stuck at GND due to stuck port data_in ;
+; NUM_OF_WORDS[4]                        ; Stuck at VCC due to stuck port data_in ;
+; NUM_OF_WORDS[10]                       ; Stuck at GND due to stuck port data_in ;
 ; phase~6                                ; Lost fanout                            ;
 ; phase~8                                ; Lost fanout                            ;
-; state~10                               ; Lost fanout                            ;
 ; state~11                               ; Lost fanout                            ;
 ; state~12                               ; Lost fanout                            ;
 ; state~13                               ; Lost fanout                            ;
 ; state~14                               ; Lost fanout                            ;
+; state~15                               ; Lost fanout                            ;
 ; ct[3]                                  ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 72 ;                                        ;
+; Total Number of Removed Registers = 39 ;                                        ;
 +----------------------------------------+----------------------------------------+
+
+
++--------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                          ;
++-----------------+---------------------------+----------------------------------------+
+; Register name   ; Reason for Removal        ; Registers Removed due to This Register ;
++-----------------+---------------------------+----------------------------------------+
+; NUM_OF_WORDS[4] ; Stuck at VCC              ; ct[3]                                  ;
+;                 ; due to stuck port data_in ;                                        ;
++-----------------+---------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -299,12 +314,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 91    ;
-; Number of registers using Synchronous Clear  ; 64    ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 42    ;
+; Total registers                              ; 2189  ;
+; Number of registers using Synchronous Clear  ; 744   ;
+; Number of registers using Synchronous Load   ; 1273  ;
+; Number of registers using Asynchronous Clear ; 44    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 80    ;
+; Number of registers using Clock Enable       ; 2176  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -314,24 +329,57 @@ Encoding Type:  One-Hot
 +----------------------------------------+---------+
 ; Inverted Register                      ; Fan out ;
 +----------------------------------------+---------+
-; NUM_OF_WORDS[0]                        ; 4       ;
+; NUM_OF_WORDS[0]                        ; 5       ;
 ; Total number of inverted registers = 1 ;         ;
 +----------------------------------------+---------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 5:1                ; 2 bits    ; 6 ALUTs       ; 2 ALUTs              ; 4 ALUTs                ; Yes        ; |bitcoin_hash|cur_we       ;
-; 5:1                ; 32 bits   ; 96 ALUTs      ; 0 ALUTs              ; 96 ALUTs               ; Yes        ; |bitcoin_hash|count[25]    ;
-; 5:1                ; 16 bits   ; 48 ALUTs      ; 0 ALUTs              ; 48 ALUTs               ; Yes        ; |bitcoin_hash|cur_addr[7]  ;
-; 7:1                ; 16 bits   ; 64 ALUTs      ; 0 ALUTs              ; 64 ALUTs               ; Yes        ; |bitcoin_hash|offset[11]   ;
-; 7:1                ; 8 bits    ; 32 ALUTs      ; 0 ALUTs              ; 32 ALUTs               ; Yes        ; |bitcoin_hash|i[7]         ;
-; 7:1                ; 8 bits    ; 32 ALUTs      ; 0 ALUTs              ; 32 ALUTs               ; Yes        ; |bitcoin_hash|j[7]         ;
-; 5:1                ; 2 bits    ; 6 ALUTs       ; 4 ALUTs              ; 2 ALUTs                ; No         ; |bitcoin_hash|Selector1    ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
+; 3:1                ; 32 bits   ; 64 ALUTs      ; 32 ALUTs             ; 32 ALUTs               ; Yes        ; |bitcoin_hash|message[31][23]    ;
+; 3:1                ; 32 bits   ; 64 ALUTs      ; 0 ALUTs              ; 64 ALUTs               ; Yes        ; |bitcoin_hash|message[30][15]    ;
+; 3:1                ; 32 bits   ; 64 ALUTs      ; 0 ALUTs              ; 64 ALUTs               ; Yes        ; |bitcoin_hash|message[29][19]    ;
+; 3:1                ; 32 bits   ; 64 ALUTs      ; 0 ALUTs              ; 64 ALUTs               ; Yes        ; |bitcoin_hash|message[28][31]    ;
+; 3:1                ; 32 bits   ; 64 ALUTs      ; 0 ALUTs              ; 64 ALUTs               ; Yes        ; |bitcoin_hash|message[27][6]     ;
+; 3:1                ; 32 bits   ; 64 ALUTs      ; 0 ALUTs              ; 64 ALUTs               ; Yes        ; |bitcoin_hash|message[26][30]    ;
+; 3:1                ; 32 bits   ; 64 ALUTs      ; 0 ALUTs              ; 64 ALUTs               ; Yes        ; |bitcoin_hash|message[25][2]     ;
+; 3:1                ; 32 bits   ; 64 ALUTs      ; 0 ALUTs              ; 64 ALUTs               ; Yes        ; |bitcoin_hash|message[24][31]    ;
+; 3:1                ; 32 bits   ; 64 ALUTs      ; 0 ALUTs              ; 64 ALUTs               ; Yes        ; |bitcoin_hash|message[23][11]    ;
+; 3:1                ; 32 bits   ; 64 ALUTs      ; 0 ALUTs              ; 64 ALUTs               ; Yes        ; |bitcoin_hash|message[22][2]     ;
+; 3:1                ; 32 bits   ; 64 ALUTs      ; 0 ALUTs              ; 64 ALUTs               ; Yes        ; |bitcoin_hash|message[21][15]    ;
+; 3:1                ; 32 bits   ; 64 ALUTs      ; 32 ALUTs             ; 32 ALUTs               ; Yes        ; |bitcoin_hash|message[20][6]     ;
+; 3:1                ; 32 bits   ; 64 ALUTs      ; 0 ALUTs              ; 64 ALUTs               ; Yes        ; |bitcoin_hash|message[19][7]     ;
+; 5:1                ; 16 bits   ; 48 ALUTs      ; 0 ALUTs              ; 48 ALUTs               ; Yes        ; |bitcoin_hash|bit_offset[4]      ;
+; 5:1                ; 32 bits   ; 96 ALUTs      ; 0 ALUTs              ; 96 ALUTs               ; Yes        ; |bitcoin_hash|message[0][23]     ;
+; 5:1                ; 32 bits   ; 96 ALUTs      ; 0 ALUTs              ; 96 ALUTs               ; Yes        ; |bitcoin_hash|message[1][28]     ;
+; 5:1                ; 32 bits   ; 96 ALUTs      ; 0 ALUTs              ; 96 ALUTs               ; Yes        ; |bitcoin_hash|message[2][20]     ;
+; 5:1                ; 32 bits   ; 96 ALUTs      ; 0 ALUTs              ; 96 ALUTs               ; Yes        ; |bitcoin_hash|message[3][9]      ;
+; 5:1                ; 32 bits   ; 96 ALUTs      ; 0 ALUTs              ; 96 ALUTs               ; Yes        ; |bitcoin_hash|message[4][24]     ;
+; 5:1                ; 32 bits   ; 96 ALUTs      ; 0 ALUTs              ; 96 ALUTs               ; Yes        ; |bitcoin_hash|message[5][6]      ;
+; 5:1                ; 32 bits   ; 96 ALUTs      ; 0 ALUTs              ; 96 ALUTs               ; Yes        ; |bitcoin_hash|message[6][20]     ;
+; 5:1                ; 32 bits   ; 96 ALUTs      ; 0 ALUTs              ; 96 ALUTs               ; Yes        ; |bitcoin_hash|message[7][27]     ;
+; 5:1                ; 32 bits   ; 96 ALUTs      ; 32 ALUTs             ; 64 ALUTs               ; Yes        ; |bitcoin_hash|message[8][18]     ;
+; 5:1                ; 32 bits   ; 96 ALUTs      ; 0 ALUTs              ; 96 ALUTs               ; Yes        ; |bitcoin_hash|message[9][30]     ;
+; 5:1                ; 32 bits   ; 96 ALUTs      ; 0 ALUTs              ; 96 ALUTs               ; Yes        ; |bitcoin_hash|message[10][26]    ;
+; 5:1                ; 32 bits   ; 96 ALUTs      ; 0 ALUTs              ; 96 ALUTs               ; Yes        ; |bitcoin_hash|message[11][15]    ;
+; 5:1                ; 32 bits   ; 96 ALUTs      ; 0 ALUTs              ; 96 ALUTs               ; Yes        ; |bitcoin_hash|message[12][28]    ;
+; 5:1                ; 32 bits   ; 96 ALUTs      ; 0 ALUTs              ; 96 ALUTs               ; Yes        ; |bitcoin_hash|message[13][21]    ;
+; 5:1                ; 32 bits   ; 96 ALUTs      ; 0 ALUTs              ; 96 ALUTs               ; Yes        ; |bitcoin_hash|message[14][3]     ;
+; 5:1                ; 32 bits   ; 96 ALUTs      ; 32 ALUTs             ; 64 ALUTs               ; Yes        ; |bitcoin_hash|message[15][15]    ;
+; 5:1                ; 32 bits   ; 96 ALUTs      ; 0 ALUTs              ; 96 ALUTs               ; Yes        ; |bitcoin_hash|count[9]           ;
+; 6:1                ; 512 bits  ; 2048 ALUTs    ; 1024 ALUTs           ; 1024 ALUTs             ; Yes        ; |bitcoin_hash|w[6][1]            ;
+; 7:1                ; 32 bits   ; 128 ALUTs     ; 0 ALUTs              ; 128 ALUTs              ; Yes        ; |bitcoin_hash|cur_write_data[31] ;
+; 7:1                ; 16 bits   ; 64 ALUTs      ; 16 ALUTs             ; 48 ALUTs               ; Yes        ; |bitcoin_hash|cur_addr[10]       ;
+; 9:1                ; 16 bits   ; 96 ALUTs      ; 0 ALUTs              ; 96 ALUTs               ; Yes        ; |bitcoin_hash|offset[3]          ;
+; 9:1                ; 8 bits    ; 48 ALUTs      ; 0 ALUTs              ; 48 ALUTs               ; Yes        ; |bitcoin_hash|i[4]               ;
+; 9:1                ; 8 bits    ; 48 ALUTs      ; 0 ALUTs              ; 48 ALUTs               ; Yes        ; |bitcoin_hash|j[3]               ;
+; 9:1                ; 256 bits  ; 1536 ALUTs    ; 256 ALUTs            ; 1280 ALUTs             ; Yes        ; |bitcoin_hash|h0[26]             ;
+; 9:1                ; 256 bits  ; 1536 ALUTs    ; 512 ALUTs            ; 1024 ALUTs             ; Yes        ; |bitcoin_hash|d[26]              ;
+; 5:1                ; 2 bits    ; 6 ALUTs       ; 2 ALUTs              ; 4 ALUTs                ; Yes        ; |bitcoin_hash|NUM_OF_WORDS[4]    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------+
@@ -339,7 +387,7 @@ Encoding Type:  One-Hot
 +----------------+----------------------------------------------------------------------------------+----------------+
 ; Parameter Name ; Value                                                                            ; Type           ;
 +----------------+----------------------------------------------------------------------------------+----------------+
-; num_nonces     ; 2                                                                                ; Signed Integer ;
+; num_nonces     ; 16                                                                               ; Signed Integer ;
 ; k              ; (1116352408,1899447441,-1245643825,-373957723,961987163,1508970993,-1841331548,- ; Array/Record   ;
 ; k              ; 1424204075,-670586216,310598401,607225278,1426881987,1925078388,-2132889090,-168 ;                ;
 ; k              ; 0079193,-1046744716,-459576895,-272742522,264347078,604807628,770255983,12491501 ;                ;
@@ -358,28 +406,35 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriaii_ff            ; 91                          ;
-;     CLR               ; 10                          ;
-;     ENA               ; 16                          ;
+; arriaii_ff            ; 2189                        ;
+;     CLR               ; 11                          ;
+;     CLR SLD           ; 1                           ;
+;     ENA               ; 160                         ;
 ;     ENA CLR SCLR      ; 32                          ;
-;     ENA SCLR          ; 32                          ;
+;     ENA SCLR          ; 712                         ;
+;     ENA SLD           ; 1272                        ;
 ;     plain             ; 1                           ;
 ; boundary_port         ; 118                         ;
-; stratixiv_lcell_comb  ; 117                         ;
-;     arith             ; 80                          ;
-;         1 data inputs ; 64                          ;
-;         2 data inputs ; 16                          ;
-;     normal            ; 37                          ;
+; stratixiv_lcell_comb  ; 1690                        ;
+;     arith             ; 432                         ;
+;         1 data inputs ; 80                          ;
+;         2 data inputs ; 342                         ;
+;         3 data inputs ; 10                          ;
+;     extend            ; 1                           ;
+;         7 data inputs ; 1                           ;
+;     normal            ; 1129                        ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 1                           ;
-;         2 data inputs ; 4                           ;
-;         3 data inputs ; 3                           ;
-;         4 data inputs ; 3                           ;
-;         5 data inputs ; 11                          ;
-;         6 data inputs ; 14                          ;
+;         2 data inputs ; 11                          ;
+;         3 data inputs ; 954                         ;
+;         4 data inputs ; 19                          ;
+;         5 data inputs ; 27                          ;
+;         6 data inputs ; 116                         ;
+;     shared            ; 128                         ;
+;         3 data inputs ; 128                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 4.10                        ;
-; Average LUT depth     ; 2.37                        ;
+; Max LUT depth         ; 8.10                        ;
+; Average LUT depth     ; 2.96                        ;
 +-----------------------+-----------------------------+
 
 
@@ -388,7 +443,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -398,123 +453,40 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Fri Mar 19 20:04:26 2021
+    Info: Processing started: Sat Mar 20 14:15:08 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off bitcoin_hash -c bitcoin_hash
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file tb_bitcoin_hash.sv
-    Info (12023): Found entity 1: tb_bitcoin_hash File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/tb_bitcoin_hash.sv Line: 1
+    Info (12023): Found entity 1: tb_bitcoin_hash File: C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/tb_bitcoin_hash.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file bitcoin_hash.sv
-    Info (12023): Found entity 1: bitcoin_hash File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 1
+    Info (12023): Found entity 1: bitcoin_hash File: C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/bitcoin_hash.sv Line: 1
 Info (12127): Elaborating entity "bitcoin_hash" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at bitcoin_hash.sv(54): truncated value with size 16 to match size of target (8) File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 54
-Warning (10230): Verilog HDL assignment warning at bitcoin_hash.sv(181): truncated value with size 32 to match size of target (16) File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 181
-Warning (10230): Verilog HDL assignment warning at bitcoin_hash.sv(201): truncated value with size 32 to match size of target (4) File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 201
-Warning (10230): Verilog HDL assignment warning at bitcoin_hash.sv(212): truncated value with size 32 to match size of target (8) File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 212
-Warning (10230): Verilog HDL assignment warning at bitcoin_hash.sv(232): truncated value with size 32 to match size of target (8) File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 232
-Warning (10230): Verilog HDL assignment warning at bitcoin_hash.sv(318): truncated value with size 32 to match size of target (16) File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 318
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "mem_we" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 3
-    Warning (13410): Pin "mem_write_data[0]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[1]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[2]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[3]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[4]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[5]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[6]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[7]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[8]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[9]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[10]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[11]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[12]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[13]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[14]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[15]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[16]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[17]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[18]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[19]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[20]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[21]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[22]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[23]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[24]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[25]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[26]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[27]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[28]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[29]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[30]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
-    Warning (13410): Pin "mem_write_data[31]" is stuck at GND File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 5
+Warning (10230): Verilog HDL assignment warning at bitcoin_hash.sv(56): truncated value with size 16 to match size of target (8) File: C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/bitcoin_hash.sv Line: 56
+Warning (10230): Verilog HDL assignment warning at bitcoin_hash.sv(184): truncated value with size 32 to match size of target (16) File: C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/bitcoin_hash.sv Line: 184
+Warning (10230): Verilog HDL assignment warning at bitcoin_hash.sv(206): truncated value with size 32 to match size of target (4) File: C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/bitcoin_hash.sv Line: 206
+Warning (10230): Verilog HDL assignment warning at bitcoin_hash.sv(217): truncated value with size 32 to match size of target (8) File: C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/bitcoin_hash.sv Line: 217
+Warning (10230): Verilog HDL assignment warning at bitcoin_hash.sv(238): truncated value with size 32 to match size of target (8) File: C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/bitcoin_hash.sv Line: 238
+Warning (10230): Verilog HDL assignment warning at bitcoin_hash.sv(343): truncated value with size 32 to match size of target (16) File: C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/bitcoin_hash.sv Line: 343
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 7 registers lost all their fanouts during netlist optimizations.
-Info (144001): Generated suppressed messages file C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/output_files/bitcoin_hash.map.smsg
+Info (144001): Generated suppressed messages file C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/output_files/bitcoin_hash.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 48 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "output_addr[0]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 2
-    Warning (15610): No output dependent on input pin "output_addr[1]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 2
-    Warning (15610): No output dependent on input pin "output_addr[2]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 2
-    Warning (15610): No output dependent on input pin "output_addr[3]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 2
-    Warning (15610): No output dependent on input pin "output_addr[4]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 2
-    Warning (15610): No output dependent on input pin "output_addr[5]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 2
-    Warning (15610): No output dependent on input pin "output_addr[6]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 2
-    Warning (15610): No output dependent on input pin "output_addr[7]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 2
-    Warning (15610): No output dependent on input pin "output_addr[8]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 2
-    Warning (15610): No output dependent on input pin "output_addr[9]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 2
-    Warning (15610): No output dependent on input pin "output_addr[10]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 2
-    Warning (15610): No output dependent on input pin "output_addr[11]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 2
-    Warning (15610): No output dependent on input pin "output_addr[12]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 2
-    Warning (15610): No output dependent on input pin "output_addr[13]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 2
-    Warning (15610): No output dependent on input pin "output_addr[14]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 2
-    Warning (15610): No output dependent on input pin "output_addr[15]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 2
-    Warning (15610): No output dependent on input pin "mem_read_data[0]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[1]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[2]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[3]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[4]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[5]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[6]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[7]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[8]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[9]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[10]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[11]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[12]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[13]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[14]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[15]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[16]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[17]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[18]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[19]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[20]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[21]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[22]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[23]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[24]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[25]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[26]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[27]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[28]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[29]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[30]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-    Warning (15610): No output dependent on input pin "mem_read_data[31]" File: C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/bitcoin_hash.sv Line: 6
-Info (21057): Implemented 249 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 3113 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 67 input pins
     Info (21059): Implemented 51 output pins
-    Info (21061): Implemented 131 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 90 warnings
-    Info: Peak virtual memory: 4869 megabytes
-    Info: Processing ended: Fri Mar 19 20:04:33 2021
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:20
+    Info (21061): Implemented 2995 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 7 warnings
+    Info: Peak virtual memory: 4908 megabytes
+    Info: Processing ended: Sat Mar 20 14:15:18 2021
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:24
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in C:/Users/Potato/Documents/School/ECE 111/final/bitcoin_hash/output_files/bitcoin_hash.map.smsg.
+The suppressed messages can be found in C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/output_files/bitcoin_hash.map.smsg.
 
 

@@ -33,6 +33,7 @@ int            num_errors;
 int            cycles;
 int            m, n, t;
 
+
 // instantiate your design
 bitcoin_hash bitcoin_hash_inst (clk, reset_n, start, message_addr, output_addr, done,
     mem_clk, mem_we, mem_addr, mem_write_data, mem_read_data);
