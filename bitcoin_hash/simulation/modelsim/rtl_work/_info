@@ -1,0 +1,61 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/simulation/modelsim
+vbitcoin_hash
+Z1 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z2 !s110 1616223965
+!i10b 1
+!s100 7L]7:n?T0d`hKS6<SK_2J1
+Z3 !s11b Dg1SIo80bB@j0V0VzS_@n1
+Ib3_hYn8:M]_Ykh02W5DTj3
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+S1
+R0
+w1616222010
+8C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/bitcoin_hash.sv
+FC:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/bitcoin_hash.sv
+!i122 1
+L0 1 386
+Z5 OV;L;2020.1;71
+r1
+!s85 0
+31
+!s108 1616223964.000000
+!s107 C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/bitcoin_hash.sv|
+!s90 -reportprogress|300|-work|work|C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/bitcoin_hash.sv|
+!i113 1
+Z6 o-work work
+Z7 tCvgOpt 0
+vtb_bitcoin_hash
+R1
+R2
+!i10b 1
+!s100 RS7MYioZZ1=^MoE4YDhTZ1
+R3
+IJbfL8AIN2g_CchiKDEJKS1
+R4
+S1
+R0
+w1616221967
+8C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/tb_bitcoin_hash.sv
+FC:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/tb_bitcoin_hash.sv
+!i122 2
+L0 1 355
+R5
+r1
+!s85 0
+31
+!s108 1616223965.000000
+!s107 C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/tb_bitcoin_hash.sv|
+!s90 -reportprogress|300|-work|work|C:/Users/Potato/Documents/School/ECE 111/me/bitcoin_hash/tb_bitcoin_hash.sv|
+!i113 1
+R6
+R7
